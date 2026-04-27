@@ -1,10 +1,20 @@
-import telebot
+import telebot 
 from telebot import types
 import sqlite3
 import time
 
 # ЗАМЕНИТЕ НА ВАШ ТОКЕН!
-bot = telebot.TeleBot('8528721355:AAGF3rTe5mIxl35NsDyJbtye-LRdWAtttsk')
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+if not TOKEN:
+    raise RuntimeError("TELEGRAM_BOT_TOKEN is not set")
+
+bot = telebot.TeleBot(TOKEN)
 
 # Список запрещенных слов
 BAD_WORDS = ['мат', 'спам', 'реклама']
